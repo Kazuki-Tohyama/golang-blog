@@ -1,0 +1,12 @@
+version: '3.5'
+services:
+  api:
+    container_name: api
+    build:
+      context: .
+      dockerfile: docker/api/Dockerfile
+      target: build
+    tty: true
+    volumes:
+      - ./api:/go/src/github.com/Kazuki-Tohyama/go-nuxt-blog/api
+
