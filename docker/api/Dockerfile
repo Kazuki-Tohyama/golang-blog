@@ -2,8 +2,8 @@ FROM golang:latest
 
 WORKDIR /go/src/github.com/Kazuki-Tohyama/go-nuxt-blog/api
 
-COPY go.mod .
-COPY go.sum .
+COPY ./api/go.mod .
+COPY ./api/go.sum .
 
 RUN go mod download
 COPY . .

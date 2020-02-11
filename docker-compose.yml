@@ -5,7 +5,6 @@ services:
     build:
       context: .
       dockerfile: docker/api/Dockerfile
-      target: build
     tty: true
     volumes:
       - ./api:/go/src/github.com/Kazuki-Tohyama/go-nuxt-blog/api
