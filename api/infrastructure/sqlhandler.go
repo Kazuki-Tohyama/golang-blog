@@ -2,7 +2,7 @@ package infrastructure
 
 import (
 	"github.com/jinzhu/gorm"
-	_ "github.com/jinzhu/gorm/dialects/sqlite"
+	_ "github.com/jinzhu/gorm/dialects/mysql"
 	"github.com/Kazuki-Tohyama/go-nuxt-blog/api/interfaces/database"
 )
 
