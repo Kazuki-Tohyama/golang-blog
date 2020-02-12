@@ -8,6 +8,8 @@ services:
     tty: true
     volumes:
       - ./api:/go/src/github.com/Kazuki-Tohyama/go-nuxt-blog/api
+    ports:
+      - "8080:8080"
   mysql:
     container_name: mysql
     build:

@@ -16,4 +16,6 @@ func init() {
 	router.GET("/articles/:id", func(c *gin.Context) { articleController.Show(c) })
 
 	Router = router
+
+	Router.Run(":8080")
 }
