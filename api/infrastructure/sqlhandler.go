@@ -11,7 +11,7 @@ type SqlHandler struct {
 }
 
 func NewSqlHandler() database.SqlHandler {
-	conn, err := gorm.Open("mysql", "root:root@tcp(0.0.0.0:3306)/sample?charset=utf8&parseTime=True&loc=Local")
+	conn, err := gorm.Open("mysql", "root:root@tcp(mysql:3306)/sample?charset=utf8&parseTime=True&loc=Local")
 	if err != nil {
 		panic(err.Error)
 	}

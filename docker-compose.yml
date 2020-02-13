@@ -1,20 +1,12 @@
 version: '3.5'
 services:
-  api:
-    container_name: api
-    build:
-      context: .
-      dockerfile: docker/api/Dockerfile
-    tty: true
-    volumes:
-      - ./api:/go/src/github.com/Kazuki-Tohyama/go-nuxt-blog/api
-    ports:
-      - "8080:8080"
   mysql:
+    image: mysql
     container_name: mysql
     build:
       context: .
       dockerfile: ./docker/mysql/Dockerfile
+    restart: always
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: sample
@@ -27,5 +19,18 @@ services:
       - ./mysql/initdb.d:/docker-entrypoint-initdb.d
       - ./mysql/conf.d:/etc/mysql/conf.d
       - ./mysql/log/mysql:/var/log/mysql
+    hostname: mysql
     ports:
       - "3306:3306"
+  api:
+    depends_on:
+      - mysql
+    container_name: api
+    build:
+      context: .
+      dockerfile: docker/api/Dockerfile
+    tty: true
+    volumes:
+      - ./api:/go/src/github.com/Kazuki-Tohyama/go-nuxt-blog/api
+    ports:
+      - "8080:8080" 
