@@ -1,10 +1,9 @@
 package domain
 
 type Article struct {
-	ID int
+	ID int `gorm:"primary_key"`
 	Title string
 	Body string	
-	tag []string
 }
 
 type Articles []Article 

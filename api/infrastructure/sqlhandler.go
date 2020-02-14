@@ -1,9 +1,10 @@
 package infrastructure
 
 import (
+	"github.com/Kazuki-Tohyama/go-nuxt-blog/api/interfaces/database"
+	"github.com/Kazuki-Tohyama/go-nuxt-blog/api/domain"
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/mysql"
-	"github.com/Kazuki-Tohyama/go-nuxt-blog/api/interfaces/database"
 )
 
 type SqlHandler struct {
@@ -15,6 +16,7 @@ func NewSqlHandler() database.SqlHandler {
 	if err != nil {
 		panic(err.Error)
 	}
+	conn.AutoMigrate(&domain.Article{})
 	sqlHandler := new(SqlHandler)
 	sqlHandler.Conn = conn
 	return sqlHandler
@@ -36,7 +38,7 @@ func (handler *SqlHandler) Raw(sql string, values ...interface{}) *gorm.DB {
     return handler.Conn.Raw(sql, values...)
 }
 
-func (handler *SqlHandler) Create(value ...interface{}) *gorm.DB {
+func (handler *SqlHandler) Create(value interface{}) *gorm.DB {
     return handler.Conn.Create(value)
 }
 
