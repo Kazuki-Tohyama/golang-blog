@@ -1,3 +1,4 @@
 api/tmp
 mysql/data
 mysql/log
+.DS_Store

@@ -34,3 +34,14 @@ services:
       - ./api:/go/src/github.com/Kazuki-Tohyama/go-nuxt-blog/api
     ports:
       - "8080:8080" 
+  nuxt:
+    container_name: frontend
+    build:
+      context: .
+      dockerfile: docker/frontend/Dockerfile
+    tty: true
+    command: yarn run dev
+    volumes:
+      - ./frontend:/go/src/github.com/Kazuki-Tohyama/go-nuxt-blog/frontend
+    ports:
+      - "3000:3000"
