@@ -42,6 +42,7 @@ export default {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
+		'@nuxtjs/proxy',
     '@nuxtjs/pwa',
     // Doc: https://github.com/nuxt-community/dotenv-module
     '@nuxtjs/dotenv'
@@ -51,7 +52,15 @@ export default {
   ** See https://axios.nuxtjs.org/options
   */
   axios: {
+		credentials: true,
+		proxy: true
   },
+	proxy: {
+		'/articles': {
+			target: 'http://localhost:8080',
+			headers: { 'X-Forwarded-Host': 'localhost:3000' }
+		}
+	},
   /*
   ** Build configuration
   */
