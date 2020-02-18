@@ -1,2 +1,2 @@
-FROM mysql:5.7
-RUN touch /var/log/mysql/mysqld.log
+FROM mysql:8.0
+RUN mkdir /var/log/mysql && touch /var/log/mysql/mysqld.log

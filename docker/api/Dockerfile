@@ -1,9 +1,9 @@
 FROM golang:1.12-alpine
-RUN apk add --no-cache git
-RUN apk --no-cache add tzdata && \
-    cp /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
-RUN apk add curl
-RUN apk add --no-cache mysql-client
+RUN apk add --no-cache git && \
+    apk --no-cache add tzdata && \
+    cp /usr/share/zoneinfo/Asia/Tokyo /etc/localtime && \
+    apk add curl && \
+    apk add --no-cache mysql-client
 
 WORKDIR /go/src/github.com/Kazuki-Tohyama/go-nuxt-blog/api
 ENV GO111MODULE=on

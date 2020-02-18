@@ -26,6 +26,7 @@ services:
     depends_on:
       - mysql
     container_name: api
+    restart: always
     build:
       context: .
       dockerfile: docker/api/Dockerfile
@@ -38,10 +39,10 @@ services:
     container_name: frontend
     build:
       context: .
-      dockerfile: docker/frontend/Dockerfile
-    tty: true
-    command: yarn run dev
+      dockerfile: ./docker/frontend/Dockerfile
     volumes:
       - ./frontend:/go/src/github.com/Kazuki-Tohyama/go-nuxt-blog/frontend
+    tty: true
+    command: yarn dev
     ports:
       - "3000:3000"
