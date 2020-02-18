@@ -14,11 +14,11 @@ func Init() {
 		AllowHeaders: []string{"*"},
 	}))
 
-	articleController := controllers.NewArticleController(NewSqlHandler())
+	controller := controllers.NewArticleController(NewSqlHandler())
 
-	router.GET("/articles", func(c *gin.Context) { articleController.Index(c) })
-	router.POST("/articles", func(c *gin.Context) { articleController.Create(c) })
-	router.GET("/articles/:id", func(c *gin.Context) { articleController.Show(c) })
+	router.GET("/articles", func(c *gin.Context) { controller.IndexArticles(c) })
+	router.POST("/articles", func(c *gin.Context) { controller.CreateArticle(c) })
+	router.GET("/articles/:id", func(c *gin.Context) { controller.ShowArticles(c) })
 
 	router.Run(":8080")
 }

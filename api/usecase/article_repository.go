@@ -5,7 +5,7 @@ import (
 )
 
 type ArticleRepository interface {
-	Store(domain.Article) (domain.Article, error)
-	FindById(int) (domain.Article, error)
-	FindAll() (domain.Articles, error)
+	StoreArticle(domain.Article) (domain.Article, error)
+	FindArticleByUserId(int) (domain.Article, error)
+	FindAllArticles() (domain.Articles, error)
 }
