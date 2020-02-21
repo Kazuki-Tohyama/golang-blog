@@ -34,7 +34,8 @@ export default {
   */
   buildModules: [
     // Doc: https://github.com/nuxt-community/eslint-module
-    '@nuxtjs/eslint-module'
+    '@nuxtjs/eslint-module',
+		'@nuxt/typescript-build'
   ],
   /*
   ** Nuxt.js modules
@@ -45,7 +46,9 @@ export default {
 		'@nuxtjs/proxy',
     '@nuxtjs/pwa',
     // Doc: https://github.com/nuxt-community/dotenv-module
-    '@nuxtjs/dotenv'
+    '@nuxtjs/dotenv',
+		'@nuxtjs/bulma',
+    '@nuxtjs/font-awesome' 
   ],
   /*
   ** Axios module configuration
@@ -68,7 +71,11 @@ export default {
     /*
     ** You can extend webpack config here
     */
-    extend (config, ctx) {
+    extend (config: any, ctx: any) {
     }
+  },
+  typescript: {
+    typeCheck: true,
+    ignoreNotFoundWarnings: true
   }
 }
