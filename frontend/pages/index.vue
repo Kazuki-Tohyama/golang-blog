@@ -8,21 +8,37 @@
       <h2 class="subtitle">
         My primo Nuxt.js project
       </h2>
-      <nuxt-link to="/signup">sign up</nuxt-link>
+      <nuxt-link to="/signup">
+        sign up
+      </nuxt-link>
+      <div class="links">
+        <a
+          href="https://nuxtjs.org/"
+          target="_blank"
+          class="button--green"
+        >
+          Documentation
+        </a>
+        <a
+          href="https://github.com/nuxt/nuxt.js"
+          target="_blank"
+          class="button--grey"
+        >
+          GitHub
+        </a>
+      </div>
     </div>
   </div>
 </template>
 
-<script lang="ts">
-import { Vue, Component } from "vue-property-decorator";
-import Logo from "~/components/Logo.vue";
+<script>
+import Logo from '~/components/Logo.vue'
 
-@Component({
+export default {
   components: {
     Logo
   }
-})
-export default class IndexPage extends Vue {}
+}
 </script>
 
 <style>

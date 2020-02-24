@@ -9,59 +9,60 @@
         Signup
       </h2>
       <form @submit.prevent="signup">
-        <p class="error" v-if="error">{{ error }}</p>
+        <p v-if="error" class="error">
+          {{ error }}
+        </p>
         <input
-          type="text"
           v-model="username"
+          type="text"
           placeholder="username"
           name="username"
-        />
+        >
         <input
-          type="text"
           v-model="password"
+          type="text"
           placeholder="password"
           name="password"
-        />
+        >
         <div><button type="submit" value="signup" /></div>
       </form>
-      <nuxt-link to="/">back</nuxt-link>
+      <nuxt-link to="/">
+        back
+      </nuxt-link>
     </div>
   </div>
 </template>
 
-<script lang="ts">
-import { Vue, Component } from "vue-property-decorator";
-import Logo from "~/components/Logo.vue";
+<script>
+import Logo from '~/components/Logo.vue'
 
-@Component({
+export default {
   components: {
     Logo
+  },
+
+  data: () => {
+    return {
+      username: '',
+      password: '',
+      error: null
+    }
+  },
+
+  methods: {
+    async signup () {
+      try {
+        await this.$store.dispatch('signup', {
+          username: this.username,
+          password: this.password
+        })
+        this.$router.push('/')
+      } catch (e) {
+        this.error = e.message
+      }
+    }
   }
-});
-
-@data({
-	return {
-		username: '',
-		password: '',
-		error: null
-	}
-});
-
-@methods({
-	async signup() {
-		try {
-			await this.$store.dispatch("signup", {
-				username: this.username,
-				password: this.password
-			});
-			this.$router.push("/");
-		} catch(e) {
-			this.error = e.message;
-		}
-	}
-});
-
-export default class Signup extends Vue {}
+}
 </script>
 
 <style>
@@ -75,8 +76,8 @@ export default class Signup extends Vue {}
 }
 
 .title {
-  font-family: "Quicksand", "Source Sans Pro", -apple-system, BlinkMacSystemFont,
-    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
+    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   display: block;
   font-weight: 300;
   font-size: 100px;
