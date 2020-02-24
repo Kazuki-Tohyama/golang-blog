@@ -2,3 +2,8 @@ api/tmp
 mysql/data
 mysql/log
 .DS_Store
+
+frontend/.env
+frontend/.nuxt/
+frontend/node_modules/
+frontend/static/sw.js

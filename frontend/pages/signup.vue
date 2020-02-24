@@ -6,9 +6,25 @@
         frontend
       </h1>
       <h2 class="subtitle">
-        My primo Nuxt.js project
+        Signup
       </h2>
-      <nuxt-link to="/signup">sign up</nuxt-link>
+      <form @submit.prevent="signup">
+        <p class="error" v-if="error">{{ error }}</p>
+        <input
+          type="text"
+          v-model="username"
+          placeholder="username"
+          name="username"
+        />
+        <input
+          type="text"
+          v-model="password"
+          placeholder="password"
+          name="password"
+        />
+        <div><button type="submit" value="signup" /></div>
+      </form>
+      <nuxt-link to="/">back</nuxt-link>
     </div>
   </div>
 </template>
@@ -21,8 +37,31 @@ import Logo from "~/components/Logo.vue";
   components: {
     Logo
   }
-})
-export default class IndexPage extends Vue {}
+});
+
+@data({
+	return {
+		username: '',
+		password: '',
+		error: null
+	}
+});
+
+@methods({
+	async signup() {
+		try {
+			await this.$store.dispatch("signup", {
+				username: this.username,
+				password: this.password
+			});
+			this.$router.push("/");
+		} catch(e) {
+			this.error = e.message;
+		}
+	}
+});
+
+export default class Signup extends Vue {}
 </script>
 
 <style>

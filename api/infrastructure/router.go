@@ -17,8 +17,10 @@ func Init() {
 	controller := controllers.NewArticleController(NewSqlHandler())
 
 	router.GET("/articles", func(c *gin.Context) { controller.IndexArticles(c) })
-	router.POST("/articles", func(c *gin.Context) { controller.CreateArticle(c) })
 	router.GET("/articles/:id", func(c *gin.Context) { controller.ShowArticles(c) })
+	router.POST("/articles", func(c *gin.Context) { controller.CreateArticle(c) })
+  // router.POST("/signup", func(c *gin.Context) { controller.CreateUser(c) })
+	// router.POST("/login", func(c *gin.Context) { controller.Login(c) })
 
 	router.Run(":8080")
 }
