@@ -24,7 +24,7 @@
           placeholder="password"
           name="password"
         >
-        <div><button type="submit" value="signup" /></div>
+        <div><button type="submit" value="signup">signup</button></div>
       </form>
       <nuxt-link to="/">
         back
